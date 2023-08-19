@@ -2,7 +2,8 @@ $(document).ready(function() {
 
     const endpoint = 'https://api.github.com/users/alanmdsan';
 
-    $.ajax(endpoint).done(function(resposta) {
+    $.ajax(endpoint)
+    .done(function(resposta) {
         const name = resposta.name;
         const login = '@' + resposta.login;
         const avatar_url = resposta.avatar_url;
@@ -18,5 +19,8 @@ $(document).ready(function() {
         $('#following').text(following);
         $('#followers').text(followers);
         $('#profile-link').attr('href', html_url);
+    })
+    .fail(function() {
+        alert('Algum erro ocorreu durante a requisição, tente novamente mais tarde.');
     });
 });
